@@ -1,0 +1,14 @@
+import DocumentDefinition from "mongoose"
+import UserModel, { UserDocument } from "../models/user.model";
+
+export async function createUser(
+     input: DocumentDefinition<Omit<UserDocument, "createdAt" | "updatedAt" | "comparePassword">>
+    ) {  try {
+    console.log('here 1');
+    return await UserModel.create(input);
+
+  } catch (e: any) {
+    throw new Error(e);
+  }
+}
+
